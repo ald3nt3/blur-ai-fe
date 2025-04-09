@@ -1,17 +1,40 @@
 import "./ImageUpload.css";
-
-const checkFileSize = (event: React.ChangeEvent<HTMLInputElement>) => {
-  if (event.target.files !== null && event.target.files.length > 0) {
-    const fileSize = event.target.files[0].size;
-    const fileSizeMB = fileSize / 1024 ** 2;
-    console.log("File size: " + fileSizeMB + " MB");
-  }
-};
+import React, { useCallback, useState } from "react";
+import { useDropzone } from "react-dropzone";
 
 function ImageUpload() {
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  const onDrop = useCallback((acceptedFiles: File[]) => {
+    const file = acceptedFiles[0];
+    if (file && file.type.startsWith("image/")) {
+      const url = URL.createObjectURL(file)
+      setPreviewUrl(url);
+    }
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "image/*": [],
+    },
+    multiple: false,
+  });
+
   return (
-    <>
-      <label htmlFor="dropzone-file" className="wrapper">
+    <div className="wrapper">
+      {previewUrl ? (
+        <img
+          src={previewUrl}
+          alt="Preview"
+          className="preview"
+        />
+      ) : (
+        <div className="preview placeholder" {...getRootProps()}>
+            Image preview will be displayed here
+          </div>
+      )}
+      <label htmlFor="dropzone-file" className="upload-field" {...getRootProps()}>
         <div className="stack">
           <svg
             className="icon"
@@ -35,12 +58,12 @@ function ImageUpload() {
         </div>
       </label>
       <input
-        onChange={checkFileSize}
         id="dropzone-file"
         type="file"
-        accept="image/jpg"
+        accept="image/*"
+        {...getInputProps()}
       />
-    </>
+    </div>
   );
 }
 
