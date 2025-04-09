@@ -34,8 +34,7 @@ function ImageUpload() {
           Image preview will be displayed here
         </div>
       )}
-      <label
-        htmlFor="dropzone-file"
+      <div
         className="upload-field"
         {...getRootProps()}
       >
@@ -74,7 +73,7 @@ function ImageUpload() {
           accept="image/*"
           {...getInputProps()}
         />
-      </label>
+      </div>
     </div>
   );
 }
