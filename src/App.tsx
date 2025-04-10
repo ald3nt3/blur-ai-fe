@@ -1,10 +1,10 @@
 import './App.css'
-import ImageUpload from './components/ImageUpload'
+import BlurCheck from './pages/BlurCheck'
 
 function App() {
 
   return (
-    <ImageUpload/>
+    <BlurCheck/>
   )
 }
 
