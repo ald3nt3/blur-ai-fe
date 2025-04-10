@@ -38,7 +38,6 @@ function ImageUpload() {
         className="upload-field"
         {...getRootProps()}
       >
-        <div className="stack">
           <svg
             className="icon"
             aria-hidden="true"
@@ -66,7 +65,6 @@ function ImageUpload() {
             <b>Click to upload</b> or drag and drop
           </p>
           <p className="additional-text">JPG or PNG (MAX. 800x400px)</p>
-        </div>
         <input
           id="dropzone-file"
           type="file"
