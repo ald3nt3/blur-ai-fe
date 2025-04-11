@@ -1,7 +1,7 @@
 import CheckBlur from "../api/CheckBlur";
-import ImageUpload from "../components/ImageUpload";
+import ImageUpload from "../components/ImageUpload/ImageUpload";
 import "./BlurCheck.css";
-import React, { FormEvent } from "react";
+import { FormEvent } from "react";
 import { useState, useCallback } from "react";
 
 
