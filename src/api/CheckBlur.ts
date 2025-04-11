@@ -9,10 +9,10 @@ export default async function CheckBlur(file: File) {
   const response = await fetch(url, {
     method: "POST",
     body: formData,
-    mode: 'no-cors', // for development
+    mode: 'no-cors',
   })
     .then((res) => {
-      console.log(res.json());
+      console.log(res);
     })
     .catch((err) => {
       console.log(err);
