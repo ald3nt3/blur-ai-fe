@@ -2,7 +2,6 @@ import { Box, Button, Typography } from "@mui/joy";
 import Card from "@mui/joy/Card";
 import { useAuthentication } from "../hooks/useAuthentication";
 import { useAuthStatus } from "../hooks/useAuthStatus";
-import ImageUpload from "./ImageUpload";
 
 const Login = () => {
   const { handleLogin, handleLogout } = useAuthentication();
@@ -44,7 +43,6 @@ const Login = () => {
           >
             Logout
           </Button>
-          {isAuth && <ImageUpload/>}
         </Box>
       </Box>
     </Card>
