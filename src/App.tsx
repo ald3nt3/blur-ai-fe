@@ -1,36 +1,19 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 import ImageUpload from "./components/ImageUpload";
 import { Route, Routes } from "react-router-dom";
-import { login } from "./auth/auth";
 import Callback from "./pages/Callback";
+import Login from "./components/Login";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("id_token");
-    if (token) setLoggedIn(true);
-  }, []);
-
   return (
     <Routes>
-      <Route path="/" element={<ImageUpload />} />
+      <Route path="/" element={<Login />} />
       <Route
-        path="/auth"
+        path="/imgUplaod"
         element={
-          <div style={{ padding: "2rem" }}>
-            <h1>PKCE Auth Example</h1>
-
-            {loggedIn ? (
-              <p>You are logged in ✅</p>
-            ) : (
-              <button onClick={login}>Login</button>
-            )}
-          </div>
+          <ImageUpload/>
         }
       />
-
       <Route path="/callback" element={<Callback />} />
     </Routes>
   );

@@ -1,5 +1,5 @@
-const clientId = "TWOJE_CLIENT_ID";
-const authorizationEndpoint = "https://TWOJ_DOSTAWCA/oauth2/v1/authorize";
+const clientId = "1n4TenO3vILIXM233CSoxCmbhRF41DCE";
+const authorizationEndpoint = "https://dev-bn3hssykxatwc54p.us.auth0.com";
 const tokenEndpoint = "https://TWOJ_DOSTAWCA/oauth2/v1/token";
 const redirectUri = "http://localhost:5173/callback";
 
