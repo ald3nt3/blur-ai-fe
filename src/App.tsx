@@ -1,11 +1,13 @@
-import './App.css'
-import BlurCheck from './pages/BlurCheck'
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
 
 function App() {
-
   return (
-    <BlurCheck/>
-  )
+    <Routes>
+      <Route path="/" element={<Login />} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
