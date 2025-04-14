@@ -1,14 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
-import { useToken } from "./useToken";
+import { useEffect, useState } from "react";
+
+import { isTokenExpired } from "../auth/token";
+import { exchangeCodeForToken } from "../auth/token";
+
+const isAuthenticated = () => {
+  const token = localStorage.getItem("access_token");
+  return token !== null && !isTokenExpired(token); // Check if the token is not expired
+};
 
 export const useAuthStatus = () => {
-  const { isTokenExpired, exchangeCodeForToken } = useToken();
-  const [isAuth, setIsAuth] = useState(false);
-
-  const isAuthenticated = useCallback(() => {
-    const token = localStorage.getItem("access_token");
-    return token !== null && !isTokenExpired(token); // Check if the token is not expired
-  }, [isTokenExpired]);
+  const [isAuth, setIsAuth] = useState(isAuthenticated());
 
   // On mount, check if redirected back with an authorization code
   useEffect(() => {
@@ -27,7 +28,7 @@ export const useAuthStatus = () => {
         ); // Remove code from URL
       });
     }
-  }, [isAuthenticated, exchangeCodeForToken]);
+  }, []);
 
   return {
     isAuth,

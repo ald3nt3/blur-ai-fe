@@ -1,17 +1,17 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 type ProtectedRouteProps = {
-  isAuth: boolean;
   redirectPath?: string;
   children?: React.ReactNode;
 };
 
 export default function ProtectedRoute({
-  isAuth,
   redirectPath = "/",
   children,
 }: ProtectedRouteProps) {
-    
+  const { isAuth } = useAuthContext();
+
   if (!isAuth) {
     return <Navigate to={redirectPath} replace />;
   }

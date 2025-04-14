@@ -1,11 +1,10 @@
 import { Box, Button, Typography } from "@mui/joy";
 import Card from "@mui/joy/Card";
-import { useAuthentication } from "../../hooks/useAuthentication";
-import { useAuthStatus } from "../../hooks/useAuthStatus";  
+import { useAuthContext } from "../../contexts/AuthContext";
+import { handleLogin, handleLogout } from "../../auth/authentication";
 
 const Login = () => {
-  const { handleLogin, handleLogout } = useAuthentication();
-  const { isAuth } = useAuthStatus();
+  const { isAuth } = useAuthContext();
 
   return (
     <Card
